@@ -1,0 +1,473 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lmargin=1in,rmargin=1in,bmargin=1in,tmargin=1in]{geometry}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{
+	amsmath,		% Math Environments
+	enumerate,	    % Enumerate Environments
+	float,			% Force Placements
+	graphicx,		% Use Images
+	hyperref,		% Pointers
+	lastpage,		% Reference Lastpage
+	multicol,		% Use Multi-columns
+	multirow,		% Use Multi-rows
+	titling			% Title Placement
+}
+
+
+% -------------------
+% Hyperref
+% -------------------
+\hypersetup{
+	colorlinks = true,
+  	linkcolor  = blue,
+  	urlcolor   = blue
+}
+\renewcommand\UrlFont{\normalfont}
+
+
+% -------------------
+% Font
+% -------------------
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+
+% -------------------
+% Commands
+% -------------------
+\newcommand{\lefthead}[2]{\noindent\textbf{#1}\hfill\\[#2]}
+
+
+% -------------------
+% Course Information
+% -------------------
+
+% Simply fill in the information to fit the current course.
+
+% Instructor
+\newcommand{\instructor}{Joshua C. Agar}
+% Instructor Office
+\newcommand{\office}{WH 462}
+% Instructor Email
+\newcommand{\email}{jca318@lehigh.edu}
+% Instructor Website
+\newcommand{\website}{www.m3-learning.com}
+% Course Subject Abbreviation
+\newcommand{\coursecode}{MAT 214}
+% Course Title
+\newcommand{\coursetitle}{Processing and Properties of Ceramic Materials}
+% % Section
+\newcommand{\coursesection}{SECTION}
+% Season
+\newcommand{\semester}{Spring 2022}
+% Office Hours
+\newcommand{\officehours}{TBD}
+% Course Supervisor
+\newcommand{\coursesupervisor}{SUPERVISOR}
+% Class Dates
+\newcommand{\classdates}{MW Jan. 24, 2022 - May 6, 2022}
+% Class Time
+\newcommand{\classtime}{7:55 am - 9:10 am}
+% Classroom
+\newcommand{\classroom}{Whitaker Lab | Room 451}
+
+
+% -------------------
+% Header & Footer
+% -------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{pages}{
+	%Headers
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+	%Footers
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{\thepage \,of \pageref*{LastPage}}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+\headheight=0pt
+\footskip=20pt
+
+\pagestyle{pages}
+
+
+% -------------------
+% Title
+% -------------------
+\title{\Large\bfseries \coursecode: \coursetitle \\[0.1cm] \coursesection\ --- \semester}
+\author{}
+\date{}
+\setlength{\droptitle}{-2cm}
+
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\vspace{-2cm}
+
+
+% Introduction
+\lefthead{Instructor Information}{0.3cm}
+\indent \emph{Name:} \instructor \\
+\indent \emph{Office:} \office \\
+\indent \emph{Email:} \email \\
+\indent \emph{Office Hours:} \officehours \\
+%\indent \emph{Course Supervisor:} \coursesupervisor \\[0.3cm]
+
+
+% Class Information
+\lefthead{Class Information}{0.3cm}
+\indent \emph{Dates: } \classdates \\
+\indent \emph{Time: } \classtime \\
+\indent \emph{Classroom: } \classroom \\[0.3cm]
+
+
+
+
+
+% Course Description 
+\lefthead{Course Description}{0.3cm}
+\noindent This course is a general overview of the compositions, properties and applications of ceramic materials. The theory and practice of fabrication methods for ceramics. We will discuss multifunctional properties of ceramics materials and methods of characterization.\newline
+
+
+% Course Objectives
+\lefthead{Course Objectives}{0.3cm}
+After this course, you should be able to\dots
+        \begin{itemize}
+        \item Be able to identify unique aspects of ceramic materials
+        \item An intuition of chemical effects in ceramic materials
+        \item Understanding a variety of processing methods of ceramic materials
+        \item Basic understanding of characterization methods of ceramic materials
+        \item Understand electrical and dielectric properties of magnetic materials
+        \item Quantum properties of ceramic materials including magnetism and superconductivity
+        \item Multifunctional properties of ceramic materials including piezoelectricty, pyroelectricity, and ferroelectricity
+        \end{itemize} \vspace{0.3cm}
+
+
+
+
+% Textbook &  Software
+\lefthead{Textbook, Calculators, \& Software}{0.3cm}
+\noindent Textbook: \emph{There is no formal textbook for this course}\\
+
+\noindent Optional References: \newline \emph{Ceramic Materials
+Science and Engineering}, by C. Barry Carter,M. Grant Norton \newline \emph{Electroceramics: Materials, Properties, Applications}, by A. J. Moulson, J. M. Herbert
+\newline \emph{Principles of Electronic Materials and Devices}, by Safa O. Kasap\\[0.1cm]
+
+\noindent Calculator: You will need a calculator to do the computations that will arise throughout the course. No specific calculator is required. \\[0.1cm]
+
+
+\noindent Software: There are no specific software or computer requirements. We will do some basic programming. All Programming will be conducted in the free-tier of Google Colab. This requires a web-connected device with a modern web browser.  \\[0.1cm]
+
+
+\noindent If you have any concerns about access to the required resources please reach out to Prof. Agar for assistance. 
+\\[0.3cm]
+
+
+% Attendance
+\lefthead{Class Attendance and Participation}{0.3cm}
+ It is essential to your success in this course that you attend each lecture and participate in the discussions. Therefore, you are expected to attend each lecture and to show up on time. Should you need to miss a class for any reason, you are to contact the instructor in a timely manner. Reasons for missing lecture must be documentable and presented, if requested. You are responsible for any material covered, any work assigned, or any course changes made during the lecture. Prof. Agar will make reasonable efforts to provide missed material for approved absences. We will have in class quizzes. Quizzes missed for excused reasons will be excluded. \\
+
+\noindent \emph{Lehigh University Policy on Absences}: Active participation and engagement in coursework is critical to student success. Should you need to miss class due to illness, athletic competition, personal issue, or other circumstance, it is extremely important that you review your course syllabi for absence policy information and contact your instructor(s) as soon as possible and prior to the absence whenever possible.
+
+In cases of extenuating circumstances, timely communication is critical in order to minimize the impact on your academics. Please keep your instructor(s) and Academic Life & Student Transitions informed of your situation in order to address your situation. If you miss three (3) or more consecutive class days due to extenuating circumstances, please submit the following form and attach any relevant documentation: \href{http://www.lehigh.edu/go/absenceform}{Student Absence Form}. Upon completion of this form, students will receive an electronic notification that is their responsibility to forward to their instructor(s). In these cases, please contact Academic Life & Student Transitions to discuss your specific circumstances and how our office can be of assistance.
+
+Please note, the Student Absence Form is a self-reporting form and is used for information purposes only; it is important to note that instructors are not bound to follow a specified course of action or recommendation as a result of absence(s). 
+
+Prof. Agar will approve absences associated with any physical or mental health requests, family emergency, religious request, or any other reasonable requests. Note that it is not a requirement that you disclose any specific details regarding your reason for requesting absenteeism. The requirement is that you specify, for instance, that the request is health or religion related. You should not feel the need to disclose the nature of your health issue or your religious affiliation. If absence is requested for an extended period of time a letter from a external professional representative (e.g., a doctor, a clergy member) might be requested. This letter should merely state the dates when you will be absence and the categorical reason for your absence (e.g., religious).      
+
+Lastly, you cannot use the Student Absence Form in cases where you miss a final examination; you must complete and submit a petition request to the \href{https://studentaffairs.lehigh.edu/content/committee-standing-students}{Committee on the Standing of Students (SOS) to take a make-up final examination}. \\[0.3cm]
+
+\lefthead{COVID-19}{0.3cm}
+We are in the midst of an unprecedented pandemic. 
+We want to ensure the safety of our community.
+As a result, if you feel as if you are exhibiting COVID-19 symptoms, or had a possible exposure please refrain from coming to class.
+I will make sure to simulcast the lectures online as long as the request is made prior to the start of lecture.
+Masks are required at all times in the classroom and should be worn fully covering your nose and mouth.
+Currently the recommendation is to wear disposable rather than cloth masks.
+If you need assistance procuring masks please contact Prof. Agar.
+\\[0.3cm]
+
+% Homeworks & Labs
+\lefthead{Homework}{0.3cm}
+\noindent The only way to understand ceramics is to solve problems! It is essential for students to complete all of the homework assignments. The purpose of homeworks will for you to practice the concepts covered in class. Homework assignments are highly reflective of questions which will be asked on the exam. Completing all the homework problems is the best way to practice and prepare for quizzes and exams. \\
+If you need or desire an extension on any homework or lab for any reason, contact Prof. Agar in a timely fashion, as permitted by the need. There is no guarantee that you will receive an extension on any assignment, so plan your schedule carefully. Finally, you are encouraged to work with others on homeworks. Learning is a social activity! However, do not simply use others to do your work but rather use others to help work through and engage in the concepts. If you work with others on written homeworks, indicate on your assignment with whom you worked. \emph{Plagiarism is unacceptable} and will result in a zero grade for all persons involved, and will result in serious academic repercussions. 
+
+Homework should be submitted as a professional document, i.e. clearly legible handwriting (or computer printout if preferred), clear delineation and linear evolution of logic in problem solving,
+clear indication of source of materials beyond material provided in textbook.
+All homework should be submitted digitally on coursesite. 
+If homework is hand written a pdf compiled from images or scanned documents can be submitted. 
+Reading the syllabus is important. To see how closely you read your course syllabus I have left a hidden treasure. The first person to email me with a successfully completed wordle will get a small prize.
+If you do not own a camera capable of taking pictures of homework a scanner can be accessed in the Materials Science and Engineering Office or The Digital Media Studio.
+
+If you are of the opinion you deserve more credit than provided to you after your homework was graded, provide a written document explaining why you are of the opinion you desire this credit within a week of receiving the graded assignment. You are welcome to discuss homework questions or concerns with Prof. Agar prior to submitting request for regrading. Grade modifications will only happen after a formal request is submitted. 
+\\[0.3cm]
+
+% Quizzes
+\lefthead{Quizzes}{0.3cm}
+\noindent There will often be a weekly 15-minute quizzes. 
+The quizzes will most often be given on Mondays. 
+This a chance for you to see if you are mastering the course material. 
+Start preparing for quizzes before they arrive! 
+The previous homework will provide a good basis for the quizzes. 
+\emph{No make-up quizzes will be given.} 
+For a missed quiz with a approved excuse, the quiz will be excluded.
+If you are an athlete and expect to have frequent excused absences please notify Prof. Agar as soon as possible to make alternative arrangements.
+Quizzes will be closed book and closed notes. 
+Relevant parts of formulae will be provided.
+When required, students might be allowed to use a scientific or graphing calculator with the memory erased.
+Please make sure to always bring a calculator to class.
+Calculators cannot be shared, and calculators on cell phones may not be used. 
+Other than a calculator, no other technology may be used on quizzes. \\[0.3cm]
+
+% Exams
+\lefthead{Exams}{0.3cm}
+\noindent There is a midterm and a final exam. You are expected to be present, seated, and ready to take the exam before the exam begins. You are not permitted to use any outside materials, resources, or electronic devices (including but not limited to mobile phones, smartwatches, etc., but not including a calculator) on the exams. Any violation of this policy is a violation of the university's Academic Integrity Policy. \\
+
+\noindent \emph{There will be no make-up exams.} If an exam is missed because of an emergency please contact Prof. Agar to make arrangements. If there is a known scheduling conflict with an exam it is expected that you notify Prof. Agar at least 1 week prior to the exam, or when the scheduling conflict arises. \\
+
+\noindent The final exam is comprehensive and will be given during the University assigned exam time for the course. The exact time and location will be announced later in the semester. The final exam will only be given at the announced time. If a student has a conflict with another final exam, the student must contact their instructor at least two weeks in advance in order to have it resolved. 
+\\[0.3cm]
+
+% Presentation
+\lefthead{Presentation}{0.3cm}
+Reading peer-reviewed scientific journals is an important skill. 
+For undergraduate students (in groups of 2), graduate students independently, you will be required to present a 12 minute presentation on a modern peer reviewed journal article. 
+The journal article must be from a high impact factor (IF \> 20) journal published no earlier than 2017. 
+The paper should have some direct connection to ceramic materials. 
+Recommended journal are Nature, Science, Nature Materials, and Advanced Materials. 
+The journal article should be of a research type, review articles should not be used.
+At the midway point of the semester you must send the proposed journal article to Prof. Agar for approval.
+Journal article presentations will take place on the last weeks of class as outlined in the tentative schedule.
+Presentations will be evaluated by Prof. Agar and your peers using a provided rubric. \\[.3cm]
+
+% Presentation
+\lefthead{Paper -- Graduate Students Only}{0.3cm}
+Each graduate student will be expected to extend their presentation to a brief (5 pages - Arial 10, 1.5 line spacing) perspective that covers 3 peer-reviewed manuscripts in a related field to the course. 
+The structure should have an abstract (200-300 words), an introduction, results, discussion, conclusions, and reference section.
+The report should include at least 3 and no more than 5 figures compiled from these manuscripts. 
+The goal of this paper is to demonstrate capabilities to distil scientific information into a coherent narrative. 
+A draft of the paper will be due on 4/4. This is an ungraded submission where Prof. Agar will provide feedback.
+A rubric will be provided prior to the initial submission. 
+Final draft will be due at the final exam. It is recommended that you complete your paper prior to this date.\\[.3cm]
+
+% Grading
+\lefthead{Grading}{0.3cm}
+\noindent The course grade is determined by the following components:
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+        Exam 1 & 20\% \\
+        Homework & 20 (15\% Graduate) \\
+        Quizzes & 15\% \\
+        Presentation & 10\% \\
+        Final Exam & 30\% \\
+        Class Participation & 5 (0\% Graduate)\\
+        Paper & 0 (10\% Graduate)\\
+        \end{tabular}
+        \end{table} 
+        \\
+        \vspace{0.3cm}
+
+% Grading Scale
+\lefthead{Grade Scale}{0.3cm}
+\noindent Final grades will be assigned according to the following scale: \\
+        \begin{center}
+        \begin{tabular}{|l||c|l||c|} \hline
+        A & 93 -- 100 & C+ & 77 -- 79 \\ \hline
+        A-- & 90 -- 92 & C & 73 -- 76 \\ \hline
+        B+ & 87 -- 89 & C-- & 70 -- 72 \\ \hline
+        B & 83 -- 86 & D & 60 -- 69 \\ \hline
+        B-- & 80 -- 82 & F & 0 -- 59 \\ \hline
+        \end{tabular}
+        \end{center} \vspace{0.3cm}
+        
+\noindent Note, Prof. Agar has the discretion to curve the class grades. Curves will never be applied in a way that decreases your grades.\\[.3 cm]
+
+% Schedule
+\lefthead{Tentative Schedule}{0.3cm}
+\noindent The following is a \emph{tentative} schedule for the course.
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{l|l|l|} 
+	Week of\dots & Topic & Assignments \\ \hline 
+	1/24 & Introduction to Ceramic Materials and Applications & \\
+	1/31 & Point Defects, Diffusion, and Charge &   \\
+	2/07 & Surfaces, Nanoparticles, Colloids, and Foams &  Homework 1\\ 
+	2/14 & Sintering and Forming & Homework 2  \\
+	2/21 & Thin Films and Single Crystals & Homework 3  \\
+	2/28 & Multifunctional Properties of Ceramics & Homework 4 \\
+	3/07 & Electrical Conduction in Ceramics &  \\
+	3/14 & Spring Break! &  \\
+	3/21 & Semiconducting Properties in Ceramics & Homework 5 \\
+	3/28 & Superconductivity in Ceramics &  Homework 6\\
+	4/4 & Magnetism in Ceramics &  \\
+	4/11 & Piezoelectricity and Pyroelectricity in Ceramics & Homework 7  \\
+	4/18 & Ceramics in Energy Production and Storage & Homework 8 \\
+	4/25 & Ferroelectricity and Multiferroic Materials &  \\
+	5/2 & Final Presentations &  \\
+	\end{tabular}
+	\end{table} \vspace{0.3cm}
+
+% Math Help
+\lefthead{Getting Help}{0.3cm}
+\noindent Be proactive about your success in the course!  If you need help, there are many resources available to help you. Your first primary contact for help is the instructor. If you are struggling, attend office hours or send an email. Do not wait to bring issues, course related or otherwise, to the attention of the instructor. If you cannot attend office hours, send an email to the instructor to try to make other arrangements.\\[0.3cm]
+
+% ADA Statement
+\lefthead{Accommodations for Students}{0.3cm}
+\noindent Prof. Agar welcomes individuals with disabilities and is committed to ensuring equal access so that all students can live, learn, and lead at Lehigh.
+In order to receive consideration for reasonable accommodations, a student with a disability must contact Disability Support Services (DSS), provide documentation, and participate in an interactive review process.  
+If the documentation supports a request for reasonable accommodations, DSS will provide students with a Letter of Accommodations. 
+Students who are approved for accommodations at Lehigh should share this letter and discuss their accommodations and learning needs with instructors as early in the semester as possible.
+Prof. Agar will do everything possible to accommodate students needs.
+If you feel that your accommodations are not being met please make sure to contact Prof. Agar.  \\[0.3cm]
+
+% Religious Observances Policy
+\lefthead{Faith/Tradition Observances Policy}{0.3cm}
+\noindent Lehigh University extends hospitality to all persons regardless of race, religion, ethnicity, sexual orientation, economic or social background, and the Religious Accommodation policy expresses the University’s respect for diversity in religious matters.
+
+Although non-sectarian, Lehigh University honors the free exercise of religion. People from a wide variety of religious traditions live and work at Lehigh, and the University acknowledges that the demands of religious observance in some traditions may cause conflicts with classroom and work schedules. Like many other colleges and universities, Lehigh has adopted a policy to accommodate those who encounter conflicts between the demands of religious observance and the demands of work or study. This "accommodation policy" acknowledges the right of those who live and work and study at Lehigh to engage in religious observances, and the University is pledged to honor the exercise of that right.
+
+This accommodation policy governs religious holidays. The university policy is to support any member of the Lehigh community who requests an absence due to the demands of religious holiday observance. Of course, nothing in this policy exempts a student from meeting course requirements or completing assignments, so the student will have to negotiate with the instructor any make-up work.
+
+Accommodations are to be dealt with on the basis of individual requests from students. Recall that religious holidays are numerous, and no holiday is privileged above another for the purposes of the Lehigh policy.
+
+If you encounter a schedule conflict with your course work due to the demands of religious observance, here is what you should do:
+
+ \begin{itemize}
+     \item Talk  with your instructor and indicate that you will be absent from class due to observance of religious holidays.
+     \item Arrange with the instructor to complete assignments.
+     \item If you are unsatisfied with the accommodations provided by Prof. Agar, including a refusal to grant you an excused absence, please call the University Chaplain, Dr. Lloyd Steffen, at x83877 or e-mail him at lhs1@lehigh.edu. The  Chaplain will speak with the faculty person, explain the accommodation policy adopted by the University and enforced by the Provost, and work to resolve any difficulties.
+ \end{itemize}
+
+
+Lehigh’s Religious Accommodation Policy is published in the Student Handbook and all students have access to an online copy. Any questions about the Religious Accommodation policy should be directed to the University Chaplain, Rev. Dr. Lloyd Steffen (\href{lhs1@lehigh.edu}{lhs1@lehigh.edu}). \\[0.3cm]
+
+
+
+
+
+% Counseling Services
+\lefthead{Counseling Services}{0.3cm}
+\noindent College can be a time of uncertainty, inquiry, expansion, and adaptation for many students. Students at Lehigh have access to Counseling & Psychological Services (UCPS). UCPS can help students connect with others to facilitate the process of exploring and making meaning, and understanding your internal experiences. The two primary ways that engage in meaningful connection with others at UCPS are through group and individual therapy spaces. Whether our students are navigating new circumstances, renegotiating relationships, contemplating identity, considering making a change, or are wanting a safe place to talk about feelings or experience of the world, UCPS is here.
+
+At this time, all services are available for enrolled undergraduate and graduate students remotely.\\[0.3cm]
+
+\noindent \textbf{If it is an emergency and someone needs immediate care}:
+\begin{itemize}
+    \item Call Campus Police at 610-758-4200 or 911 and ask for assistance.
+    \item Call the Dean of Students (DOS) office at 610-758-4156 and ask for assistance.
+\end{itemize}
+
+\noindent If you are in crisis during regular office hours, please consider one of the following options:
+
+\begin{itemize}
+    \item Call UCPS receptionist at 610 758 3880 and communicate your wish for assistance.
+    \item Call the Dean of Students (DOS) office at 610-758-4156 and ask for assistance. If the student is a graduate student, you may also want to include Associate Dean of Graduate Students, Kathleen Hutnik (8-3648 or kaha@lehigh.edu) on communication.
+\end{itemize}
+ 
+\noindent Call Campus Police at 610-758-4200 and ask for assistance. 
+If it is after hours:
+
+\begin{itemize}
+    \item Dial 610-758-3880, select “0” on the keypad, and talk to the counselor on call.
+    \item Go to the nearest Emergency Room if you need immediate assistance.
+\end{itemize}
+
+\noindent If you are concerned about someone other than yourself:
+
+\begin{itemize}
+    \item Fill out the Student of Concern form or contact the DOS at 610-758-4156. If the student is a graduate student, you may also want to include Associate Dean of Graduate Students, Kathleen Hutnik (8-3648 or kaha@lehigh.edu) on communication.
+    \item Call UCPS 610 758 3880 and ask to talk to a counselor about your concern.
+    \item Assist the person in getting to the ER if necessary.
+\end{itemize}
+
+Know that my office and conversations with me are a safe place. 
+Personal information told to me in private will remain confidential. 
+The only exception is sexual misconduct or if I feel that you are at risk of harming yourself or others. 
+If this information is relayed to me I have an obligation to notify the dean of students.
+If an issues arises I promise to do my best to facilitate you getting the help you need to resolve your issues. 
+I do not, however, have professional training in counseling or crisis management.\\[.3cm]  
+
+% Religious Observances Policy
+\lefthead{Gender and Sexual Identity}{0.3cm}
+
+\noindent People commonly use gender and sexual orientation as part of their identity. A person's identity should not be assumed based on societal norms or constructs as they are not related to a person's self-identity. Unfortunately, English uses gendered pronouns. A culture of pronoun sharing will be cultivated in my classroom. If you do not know someone's pronouns, it is preferred to use identity-agnostic (they/them) pronouns until you hear from them directly. Prof. Agar will not tolerate any bias or discrimination based on a person's likeness or identity..\\[0.3cm]
+
+% Email Policy
+\lefthead{Email Policy}{0.3cm}
+\noindent Lehigh University has established email as a primary vehicle for official communication with students, faculty, and staff. All email communication in this course should be done using your @lehigh.edu email account. Due to federal laws, such as FERPA, emails coming from a non-SU email may not receive a response. Please, title emails with MAT~214: [Email Issue], where ``email issue'' is a summary title of the content of the email. This is to help ensure that your email is noticed and responded to. 
+Prof. get tons of junk mail, taking these steps will ensure that your emails are attended to.
+Prof. Agar will do his best to respond to email requests within 24 hours.
+If Prof. Agar has not responded in 24 please send him a reminder, email inboxes can become black holes.
+Long and complicated technical issues related to the course are best addressed during office hours.\\[0.3cm]
+
+\lefthead{Student Senate Statement on Academic Integrity}{0.3cm}
+We, the Lehigh University Student Senate, as the standing representative body of all undergraduates, reaffirm the duty and obligation of students to meet and uphold the highest principles and values of personal, moral and ethical conduct.
+As partners in our educational community, both students and faculty share the responsibility for promoting and helping to ensure an environment of academic integrity.
+As such, each student is expected to complete all academic course work in accordance to the standards set forth by the faculty and in compliance with the University's Code of Conduct.
+
+The work you do in this course must be your own. 
+This means that you must be aware when you are building on someone else's ideas—including the ideas of your classmates, your professor, and the authors you read—and explicitly acknowledge when you are doing so.
+Feel free to build on, react to, criticize, and analyze the ideas of others but, when you do, make it known whose ideas you are working with.\\[0.3cm]
+
+\lefthead{Equitable Community}{0.3cm}
+Lehigh University endorses The Principles of Our Equitable Community \href{http://www.lehigh.edu/~inprv/initiatives/PrinciplesEquity_Sheet_v2_032212.pdf}{Principles of Our Equitable Community}. We expect each member of this class to acknowledge and practice these Principles. Respect for each other and for differing viewpoints is a vital component of the learning environment inside and outside the classroom.
+\\[0.3cm]
+
+\lefthead{Lehigh University Policy on Harassment and Non-Discrimination}{0.3cm}
+Lehigh University upholds The Principles of Our Equitable Community and is committed to providing an educational, working, co-curricular, social, and living environment for all students, staff, faculty, trustees, contract workers, and visitors that is free from harassment and discrimination on the basis of age, color, disability, gender identity or expression, genetic information, marital or familial status, national or ethnic origin, race, religion, sex, sexual orientation, or veteran status.  
+Such harassment or discrimination is unacceptable behavior and will not be tolerated. The University strongly encourages (and, depending upon the circumstances, may require) students, faculty, staff or visitors who experience or witness harassment or discrimination, or have information about harassment or discrimination in University programs or activities, to immediately report such conduct. 
+ 
+If you have questions about Lehigh’s Policy on Harassment and Non-Discrimination or need to report harassment or discrimination, contact the Equal Opportunity  Compliance Coordinator (Alumni Memorial Building / 610.758.3535 / \href{eocc@lehigh.edu}{eocc@lehigh.edu})
+\\[0.3cm]
+
+% Respect Policy
+\lefthead{Respect Policy}{0.3 cm}
+\noindent I respect your time:
+\begin{itemize}
+\item I will come prepared to help you understand the course material and prepare you for quizzes/exams.
+\item Communication is key: I cannot help you if I do not know what is going on.
+\item I am here to help you, this is your time, so let me know what I can do to help you succeed.
+\item If there is something that you would like me to do differently, please, let me know. I am happy to work with you to make class the best it can be.
+\end{itemize}
+
+\noindent Respect my time:
+\begin{itemize}
+\item Be on time to class.
+\item Pay attention when I am talking to you.
+\item Come to class prepared by doing the work and going to office hours when you need help.
+\end{itemize}
+
+\noindent Respect each other:
+\begin{itemize}
+\item Do not be disruptive. If you need to take a call or text someone, take it outside.
+\item Work with each other to find solutions. You learn more by helping each other.
+\item Allow one another to make mistakes. This is an important part of the learning process.
+\item Use respectful language when talking with one another.
+\end{itemize} \vspace{0.3cm}
+
+% Tips for Success
+\lefthead{Tips for Success}{0cm}
+	\begin{itemize}
+	\item Be proactive about your success in the course.
+	\item Do not procrastinate! Begin your assignments and studying early!
+	\item Attend every class and recitation.
+	\item Ask questions whether it is during class, recitation, office hours, at the math clinic or via email to your instructor.
+	\item Form a study group! Working together will help you and others better understand the course material as you can work through different difficulties and offer each other clarifications on concepts. 
+	\item Do problems! Reading through your notes is not enough. Seek out new problems and work through them carefully. When you are done, check your answer. If you are wrong, examine carefully what misunderstanding occurred and how to avoid it in the future. If you were correct, examine if there was a faster way, check to see if your solution `flowed' and was easy to read, and think over what concepts/computations were used and what `type' of problem the exercise was. 
+	\item Every time you approach a new concept, carefully think how it could be applied in your own field of study.
+	\item Carefully check your code when you use any computation device or program. \\
+	\end{itemize}
+	
+\end{document}
