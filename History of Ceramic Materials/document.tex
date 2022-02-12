@@ -1,0 +1,901 @@
+\documentclass{libs/XJTLU_format}
+
+%\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \embedvideo{<poster or text>}{<video file (MP4+H264)>}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[bigfiles]{pdfbase}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[version=4]{mhchem}
+
+\ExplSyntaxOn
+%%begin novalidate
+\cs_new:Npn\embedvideo#1#2{
+%%end novalidate
+  \leavevmode
+  \pbs_pdfobj:nnn{}{fstream}{{}{#2}}
+  \pbs_pdfobj:nnn{}{dict}{
+    /Type/Filespec/F~(#2)/UF~(#2)
+    /EF~<</F~\pbs_pdflastobj:>>
+  }
+  \tl_set:Nx\video{\pbs_pdflastobj:}%
+  %
+  \pbs_pdfobj:nnn{}{dict}{
+    /Type/RichMediaInstance/Subtype/Video
+    /Asset~\video
+    /Params~<</Binding/Foreground>>
+  }
+  %
+  \pbs_pdfobj:nnn{}{dict}{
+    /Type/RichMediaConfiguration/Subtype/Video
+    /Instances~[\pbs_pdflastobj:]
+  }
+  %
+  \pbs_pdfobj:nnn{}{dict}{
+    /Type/RichMediaContent
+    /Assets~<<
+      /Names~[(#2)~\video]
+    >>
+    /Configurations~[\pbs_pdflastobj:]
+  }
+  \tl_set:Nx\rmcontent{\pbs_pdflastobj:}%
+  %
+  \pbs_pdfobj:nnn{}{dict}{
+    /Activation~<<
+      /Condition/XA
+      /Presentation~<<
+        /Transparent~true
+        /Style/Embedded
+        /PassContextClick~true
+      >>
+    >>
+    /Deactivation~<</Condition/PC>>
+  }
+  %
+  \hbox_set:Nn\l_tmpa_box{#1}
+  \tl_set:Nx\l_box_wd_tl{\dim_use:N\box_wd:N\l_tmpa_box}
+  \tl_set:Nx\l_box_ht_tl{\dim_use:N\box_ht:N\l_tmpa_box}
+  \tl_set:Nx\l_box_dp_tl{\dim_use:N\box_dp:N\l_tmpa_box}
+  \pbs_pdfxform:nnnnn{1}{1}{}{}{\l_tmpa_box}
+  %
+  \pbs_pdfannot:nnnn{\l_box_wd_tl}{\l_box_ht_tl}{\l_box_dp_tl}{
+    /Subtype/RichMedia
+    /BS~<</W~0/S/S>>
+    /Contents~(embedded~video~file:#2)
+    /NM~(rma:#2)
+    /AP~<</N~\pbs_pdflastxform:>>
+    /RichMediaSettings~\pbs_pdflastobj:
+    /RichMediaContent~\rmcontent
+  }
+  \phantom{#1}
+}%
+\ExplSyntaxOff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% % Inserting the preamble file with the packages
+% \input{libs/preamble.tex}
+% % Inserting the references file
+% \bibliography{references.bib}
+
+% % Title
+% \title[MAT 214_Processing and Properties of Ceramic Materials]{\textbf{MAT 214: Processing and Properties of Ceramic Materials}}
+% % Subtitle
+% \subtitle{Introduction to Ceramic Materials}
+% % Author of the presentation
+% \author{Prof. Joshua C. Agar}
+% % Institute's Name
+% \institute[Lehigh University]{
+%     % email for contact
+%     \normalsize{\email{jca318@lehigh.edu}}
+%     \newline
+%     % Department Name
+%     \department{Materials Science and Engineering}
+%     \newline
+%     % University name
+%     \university{Lehigh Univeristy}
+% }
+% % date of the presentation
+% \date{\today}
+
+% %\newcommand*{\keys}{\fontfamily{cmtt}\selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inserting the preamble file with the packages
+\input{libs/preamble.tex}
+% Inserting the references file
+\bibliography{references.bib}
+
+% Title
+\title[MAT 214 Spring 2022]{\textbf{MAT 214: Processing and Properties of Ceramic Materials}}
+% Subtitle
+\subtitle{History of Ceramic Materials}
+% Author of the presentation
+\author{Prof. Joshua C. Agar}
+% Institute's Name
+\institute[Lehigh University]{
+    % email for contact
+    \normalsize{\email{jca318@lehigh.edu}}
+    \newline
+    % Department Name
+    \department{Materials Science and Engineering}
+    \newline
+    % University name
+    \university{Lehigh Univeristy}
+}
+% date of the presentation
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start Document of the Presentation                                           %%               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% insert the code style
+\input{libs/code}
+
+%% ---------------------------------------------------------------------------
+% First frame (with tile, subtitle, ...)
+\begin{frame}{}
+    \maketitle
+\end{frame}
+
+\section{Learning Objectives}
+
+\begin{frame}{Learning Objectives:}
+\begin{itemize}
+    \item An appreciation for the historic origins and applications of ceramic materials
+    \item Understanding of processes and considerations for structural ceramic materials (cements)
+    \item A working knowledge of industrial applications of ceramic materials
+    \item An appreciation for the diversity of modern applications of ceramic materials
+\end{itemize}
+\end{frame}
+
+
+\section{O.G. Ceramics}
+\begin{frame}{The Stone Age}
+\begin{itemize}
+    \item Periods in time are commonly named after the materials that shaped them \pause $\rightarrow$ \emph{we are cool} \pause
+    \item Stone, or Flint is clearly a ceramic \pause 
+    \item Flint is Cryptocrystalline quartz (polymorph of $SiO_2$) $\rightarrow$ the original cryptocurrency \pause
+    \item Formed by silica carried by water as ultra-fine particles $\rightarrow$ as water is lost small crystals form \pause
+    \item The chemical conditions change slowly resulting in color, texture, and precipitates \pause
+    \item When chipped leave a sharp edge
+\end{itemize}
+
+\centering
+\includegraphics[height=1in]{Silde_Template/images/flint.png}
+    
+\end{frame}
+
+\begin{frame}{Clay}
+\begin{itemize}
+    \item<1-> The oldest samples of baked clay include more than 10,000 fragments of statuettes dated as far back as 23,000 \textsc{bce}
+    \item<2-> Silicate minerals make up the vast majority of the earth’s crust
+        \begin{itemize}
+            \item<3-> The abundance of Si and O
+            \item<4-> The high strength of the Si–O bond
+        \end{itemize}
+     \begin{columns}{\textwidth}
+      \begin{column}{0.33\textwidth}
+        \centering
+        \includegraphics<3->[height=1in]{Silde_Template/images/Abundance.png}
+      \end{column}
+      \begin{column}{0.66\textwidth}
+      \centering
+        \includegraphics<4->[height=1in]{Silde_Template/images/bond strength.png}
+      \end{column}
+    \end{columns}
+    \item<5->Their abundance makes them found in all parts of the world
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Pottery - Earthenware}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/Earthenware.jpeg}
+\vspace{1em}
+
+\begin{itemize}
+    \item Red “earthenware clay” 
+    \item Porous when not glazed, not vitreous (glassy)
+    \item Fired at fairly low temperatures, typically between 950$^{\circ}$ and 1,050$^{\circ}$C \pause
+    \item Bricks, tiles, and terra cotta vessel
+    \item Earthenware dating back to between 7,000 and 8,000 \textsc{bce}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Pottery - Stoneware}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/stoneware.jpeg}
+\vspace{1em}
+
+\begin{itemize}
+    \item Fired to a higher temperature (around 1,200–1,300$^{\circ}$C)
+    \item At least partially vitrified, and so it is nonporous and stronger
+    \item Traditional stoneware was gray or buffcolored, although the color can vary, ranging from black—through red, brown, and gray—to white \pause
+    \item Color comes from metal-oxides, called jasper
+    \item Fine white stoneware was made in China as early as 1,400 \textsc{bce}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Pottery - Porcelain}
+\begin{columns}{\textwidth}
+  \begin{column}{0.45\textwidth}
+    \centering
+    \includegraphics[height=1in]{Silde_Template/images/porcelin.jpeg}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \centering
+    \includegraphics<2->[height=1in]{Silde_Template/images/Porcelin_Microstructure.png}
+  \end{column}
+\end{columns}
+
+\begin{itemize}
+    \item It is a white, thin, and translucent ceramic that possesses a metal-like ringing sound when tapped
+    \item Porcelain is made from kaolin (also known as china clay), quartz, and feldspar
+    \item Fired at 1,250–1,300$^{\circ}$C, it is an example of vitreousware
+    \item Porcelain 618–907 \textsc{bce}
+    \item<2-> Complex microstructure containing many large grains immersed in a glass phase
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Cement}
+\begin{itemize}
+    \item A special ceramic is hydraulic (or water-cured) cement \pause
+    \item World production of hydraulic cement is about 1.5 billion tons per year \pause
+    \item When mixed with sand and gravel, we obtain concrete, the most widely utilized construction material in industrialized nations
+    \item Ancient Romans and Greeks, 2,000 years ago, pioneered the use of cement which consisted of a mixture of powdered lime ($\mathrm{CaO}$) and volcanic ash (a mixture of mainly $\mathrm{SiO_2}$, $\mathrm{Al_2O_3}$, and iron oxide)—called \emph{pozzolana}
+\end{itemize}
+    
+\end{frame}
+
+\section{Modern Industrial Ceramics}
+
+\begin{frame}{Portland Cement}
+\begin{itemize}
+    \item Modern cement is mainly Portland Cement
+    \have a specific surface area of ~300 $\mathrm{m^{2}/kg}$ and grains between 20 and 30 $\mathrm{mm}$
+\end{itemize}
+\newline
+
+Chemistry is described in a reduced nomenclature
+\newline \pause
+
+\centering
+\vspace{1em}
+\begin{tabular}{p{0.7\textwidth} @{} *5l @{}} \toprule
+\emph{Reduced Nomenclature for Cement Chemistry} &&&  \\\midrule
+ Lime CaO = C \\
+ Alumina $\mathrm{Al_2O_3}$ = A \\ 
+ Silica $\mathrm{SiO_2}$ = S \\ 
+ Water $\mathrm{H_2O}$ = H\\\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Setting Reactions Portland Cement}
+\centering
+\vspace{1em}
+\begin{tabular}{p{0.7\textwidth} @{} *5l @{}} \toprule
+\emph{Reduced Nomenclature for Cement Chemistry} &&&  \\\midrule
+ Lime CaO = C \\
+ Alumina $\mathrm{Al_2O_3}$ = A \\ 
+ Silica $\mathrm{SiO_2}$ = S \\ 
+ Water $\mathrm{H_2O}$ = H\\\bottomrule
+ \hline
+\end{tabular}
+\vspace{1em}
+  
+  \begin{enumerate}
+      \item Hydration of $\mathrm{C_3A}$
+      \newline
+      \centering
+      \ce{C3A + 6H -> C3AH6 + heat}
+      \newline
+      \RaggedRight
+      Interlocked rods and fibers 
+      \pause
+      \item Tobermorite gel $\mathrm{(Ca_3Si_2O_7\cdot 3H_2O)}$ formation 10h-100 days
+      \newline
+      \centering
+      \ce{2C2S + 4H -> C3S2H3 + CH + heat}\\
+      \ce{2C3S + 6H -> C3S2H3 + 3CH + heat}
+      \newline
+      \RaggedRight
+      This bonds everything together
+  \end{enumerate}  
+\end{frame}
+
+\begin{frame}{Process of Portland Cement}
+    
+    \begin{columns}{\textwidth}
+    \begin{column}{0.33\textwidth}
+    \centering
+    \includegraphics<1->[height=1in]{Silde_Template/images/Porcelin Cement Microstructure.png}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+    \centering
+    \includegraphics<2->[height=1.1in]{Silde_Template/images/Heating Profile.png}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+    \centering
+    \includegraphics<3->[height=1in]{Silde_Template/images/Hardness Profile.png}
+    \end{column}
+    \end{columns}
+    \begin{itemize}
+        \item<1-> Complex microstructure that evolves over many days
+        \item<2-> There is significant heat evolution $\rightarrow$ some ceramics require water cooling
+        \item<3-> Hardening happens over many days to reach final compressive strength
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Plaster of Paris}
+
+\begin{columns}{\textwidth}
+    \begin{column}{0.33\textwidth}
+    \centering
+    \includegraphics<1->[height=1in]{Silde_Template/images/death_mask.jpg}
+    \end{column}
+    \begin{column}{0.66\textwidth}
+    \centering
+    \includegraphics<4->[height=1in]{Silde_Template/images/inconnue_resusci_anne.jpg}
+    \end{column}
+\end{columns}
+
+\begin{itemize}
+    \item Hydrated calcium sulfate \ce{2CaSO4*H2O}
+    \item<2-> Sets in about 15 minutes
+    \item<3-> Cementation reaction involving the creation of interlocking crystals
+    \newline
+    \centering
+    \ce{CaSO4*1/2H2O + 3/4H2O -> 2CaSO4*H2O}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Refractories}
+\centering
+\includegraphics[height=0.75in]{Silde_Template/images/Refractory-iStock-492798423.jpeg}
+
+\begin{itemize}
+    \item Ceramic materials designed to withstand the very high temperatures (in excess of 1,000°F [538°C]) 
+    \item Important for furnaces for iron, steel, and glass production \pause
+    \item Pre-1880: Dolomite refractories are made from a calcined natural
+mineral of the composition
+\ce{CaCO3*MgCO3}
+\item 1880: Magnesite with a typical
+composition in a ratio of \ce{MgO} 83–93\%/\ce{Fe2O3} 2–7\%
+\item 1930: Chrome–magnesite a typical
+composition in ratios of
+\ce{Cr2O3}
+30–45\%/
+\ce{Al2O3}
+15–33\%/
+\ce{SiO2}
+11–17\%/FeO 3–6\%. \pause
+\item Important characteristics are good thermal shock resistance, low thermal expansion coefficient, and low creep \pause
+\item Refractory materials have complex chemistry and microstructures
+\end{itemize}
+    
+\end{frame}
+
+\section{20th Century Ceramics}
+
+\begin{frame}{Uranium Dioxide Nuclear Fuel}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/HEUraniumC_fuel_facts.png}
+
+\begin{itemize}
+    \item After 1955 it was decided to abandon metallic nuclear fuels $\rightarrow$ for Urania \ce{UO2}\\
+    \begin{enumerate}
+        \item It is resistant to hot water corrosion $\rightarrow$ can be water cooled \pause
+        \item Reasonable thermal conductivity (about 0.2–0.1 times
+that of metals) \pause
+\item Fluorite crystal structure, which can accommodate
+ion fission products (He) without straining the lattice
+    \end{enumerate}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Pore-Free Ceramics}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/Pore_free ceramics.jpeg}
+
+    \begin{itemize}
+    \item Many ceramics are fabricated from sintered ceramic powders \pause
+    \item Upon sintering a ceramic is generally porus $\rightarrow$ thus opaque \pause
+    \item \ce{Al2O3}, inhibited by \ce{MgO} can be sintered to a theoretical density to yield a translucent product. \pause
+    \item Can be used to improve mechanical properties
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Ceramic Nitrides}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/silicon-nitride-ceramic-4-23.jpeg}
+
+\begin{itemize}
+    \item Most common is silicon nitride \ce{Si3N4} is a chemical compound of the elements silicon and nitrogen \pause
+    \item Good high-temperature, chemically inert material \pause
+    \item Very good electrical resistance \pause
+    \item Is harder than metal but has good shock resistance, this makes it good for ball bearing and abrasives.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Magnetic Ferrites}
+
+\centering
+\includegraphics[height=1in]{Silde_Template/images/transformers.jpeg}
+\begin{itemize}
+    \item Commercial applications of magnetic ferrites started in 1930s $\rightarrow$ used for signal processing (e.g., inductors and transformers) \pause
+    \item Have a magnetic field switchable magnetic polarization (up-and-down states) \pause
+    \item About 1-million tons of ceramic ferrites are produced a year. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Ferroelectric Titanates}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/piezoelectric_Wing.png}
+
+\begin{itemize}
+   \item Materials are used as capacitors, transducers, thermistors, and piezoelectrics \pause
+    \item Accounts for about one-half the sales of electroceramics \pause
+    \item Have a electric field switchable electrical polarization (up-and-down states) \pause 
+    \item Tons of interesting modern applications in micro-electro-mechanical systems (MEMS) and quantum computing
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Tough Ceramics}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/tough_ceramics.jpeg}
+
+    \begin{itemize}
+        \item  Ceramics are inherently brittle with low toughness
+        \item Zirconia (\ce{ZrO2}) can increase the strength and toughness of ceramics by utilizing the tetragonal to monoclinic phase transformation induced by the presence of a stress field ahead of a crack.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Bioceramics}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/Cam_Bioceramics_Large_Porous_Granule.png}
+
+\begin{itemize}
+    \item \ce{Al2O3} was the first bioceramic, not really any true bio-application until the 1970s \pause
+    \item Ceramic hip replacements. Ceramic ball was harder and had better wear than metals \pause
+    \item Some ceramics can be bioactive and used for bone growth
+\end{itemize}
+\end{frame}
+    
+\begin{frame}{Fast-Ion Conductors}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/garnettypefa.jpeg}
+\begin{itemize}
+    \item Materials that show exceptionally high ionic conductivity are referred to as “fast-ion” conductors or “superionic” conductors \pause
+    \item Batteries operate by forming a Galvanic cell $\rightarrow$ a chemical reaction is used to produce electricity \pause
+    \item Ceramic fast-ion conductors are used for electrodes and solid-electrolytes \pause
+    \item Majority of effort is on reducing cost, and improving reliability, and electrical mobility. 
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{High-Temperature Superconductors}
+\centering
+\includegraphics[height=1in]{Silde_Template/images/Superconductors.jpeg}
+\begin{itemize}
+    \item There are some ceramics that when cooled exhibit no electrical resistance \pause
+    \item Used for maglev trains, quantum computing, magnetic resonance imaging, and much more \pause 
+    \item All high-temperature superconductors are ceramics \paui
+    \item The most common are 123 \ce{YBa2Cu3O7}
+\end{itemize}
+    
+\end{frame}
+
+\section{Important Concepts to Master}
+\begin{frame}{Important Concepts to Master}
+\begin{itemize}
+    \item Why clay is so common on earth?
+    \item Chemistry and thermal and mechanical evolution of cement
+    \item Materials design - given an application be able to suggest a candidate ceramic materials
+    \item High-level understanding of why ceramic materials are useful for specific modern applications
+\end{itemize}
+
+Things you should not attend to:
+\begin{itemize}
+    \item Specific complex chemical structures of materials
+    \item Specific dates, common names (flint), or regions where specific materials were discovered
+    \item Specific numbers provided in text or tables, important relative values should be considered.
+\end{itemize}
+    
+\end{frame}
+
+% \begin{frame}{Metals}
+
+% \begin{itemize}
+%     \item Constructed of atoms held together by delocalized electrons
+%     \pause
+%     \item They are commonly found as alloys with metallic and non-metallic elements
+%     \pause
+%     \item Delocalized electrons give metallic properties (e.g., good thermal and electrical conductivity)
+%     \pause
+%     \item Metallic bonding allows for closed-packed crystal structures that permit plastic deformation
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Polymers}
+% \begin{itemize}
+%     \item Macromolecules formed by covalent bonding of many simpler molecular units called mers 
+%     \pause
+%     \item Most polymers are organic compounds based on carbon, hydrogen, and other nonmetals such as sulfur and chlorine 
+%     \pause
+%     \item The bonding between the molecular chains determines many of their properties
+%     \pause
+%     \item Many of the plastics that we are familiar with are actually combinations of polymers and often include fillers and other additives to give the desired properties and appearance
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Ceramics}
+% What are ceramics? 
+% \pause
+% \vspace{1em}
+
+% \begin{itemize}
+%     \item “mixed” bonding a combination of covalent, ionic, and sometimes metallic
+%     \pause
+%     \item They consist of arrays of interconnected atoms; there are no discrete molecules
+%     \item The majority of ceramics are compounds of metals or metalloids and nonmetals
+%     \pause
+%     \item Most frequently they are oxides, nitrides, and carbides, however, diamond and graphite are considered ceramics.
+% \end{itemize}
+% \pause
+
+% \vspace{1em}
+% \textbf{Most solid materials that are not metal, plastic, or derived from plants or animals are ceramics}
+
+% \end{frame}
+
+% \begin{frame}{Semiconductors}
+
+% \begin{itemize}
+%     \item Only class of material based on a property
+%     \pause
+%     \item They are usually defined as having electrical conductivity between that of a good conductor and an insulator
+%     \pause
+%     \item The conductivity is strongly dependent upon the presence of small amounts of impurities
+%     \pause
+%     \item Classically, semiconductors have been limited to materials with a band gap $<3eV$, but there is growing commercial interest in large band gap semiconductors for high-temperature electronics.
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Composites}
+%     \begin{itemize}
+%         \item Composites are materials formed by more than one material (sometimes this is extended to phase)
+%         \pause
+%         \item Usually there is a matrix and a filler
+%         \pause
+%         \item it is quite common to have ceramic composites
+%     \end{itemize}
+%         \pause
+%         \centering
+%         \includegraphics[height=1in]{Silde_Template/images/carbon_fiber.jpeg}
+    
+    
+% \end{frame}
+
+% \begin{frame}{Ceramic Ontologies and Exceptions}
+% Exclusionary definition: Ceramic materials are inorganic, non-metallic solids.
+% \pause
+
+% \begin{itemize}
+%     \item All inorganic semiconductors are ceramics
+%     \pause
+%     \item A materials ceases to be a ceramic when melted
+%     \pause
+%     \item All high-temperature superconductors are ceramics
+%     \pause
+%     \item Ice even though it is an inorganic material in the solid phase is not a ceramic
+%     \pause
+%     \item Glasses live in a gray area - it is really a supercooled liquid
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Ceramic Ontologies and Exceptions}
+% Ceramics cannot be defined based on their properties
+
+% \begin{itemize}
+%     \item We can’t say “ceramics are brittle” because some can be superplastically deformed and some metals can be more brittle: a rubber hose or banana at 77 K shatters under a hammer
+%     \pause
+%     \item We can’t say “ceramics are insulators” unless we put a value on the band gap (Eg) where a material is not a semiconductor.
+%     \pause
+%     \item We can’t say “ceramics are poor conductors of heat” because diamond has the highest thermal conductivity of any known material. Porous ceramics have some of the lowest thermal conductivity of any known materials.
+% \end{itemize}
+    
+% \end{frame}
+
+% \section{Properties of Ceramics}
+
+% \begin{frame}{Brittleness}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/plate.jpeg}
+    
+%     \begin{itemize}
+%         \item This property is recognized from personal experience, such as dropping a glass beaker or a dinner plate
+%         \pause
+%         \item The reason that the majority of ceramics are brittle is the mixed ionic-covalent bonding that holds the constituent atoms together
+%         \pause
+%         \item most ceramics are brittle at room temperature but not necessarily at elevated temperatures -- they can become viscous
+%     \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Poor electrical and thermal conduction}
+    
+%     \begin{itemize}
+%         \item The valence electrons are tied up in bonds and are not free as they are in metals
+%         \pause
+%         \item Diamond, which we classified as a ceramic, has the highest thermal conductivity of any known material. \pause The conduction mechanism is due to phonons, not electrons.
+%         \pause
+%         \item The oxide ceramic $ReO_{3}$ has an electrical conductivity at room temperature similar to that of Cu
+%         \pause
+%         \item The mixed oxide $YBa_{2}Cu_{3}O_{7}$ is an HTSC; it has zero resistivity below 92 K
+%     \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Compressive Strength}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/Greekcolumns.jpeg}
+    
+%     \begin{itemize}
+%         \item Ceramics are stronger in compression than in tension, whereas metals have comparable tensile and compressive strengths \pause
+%         \item This difference is important when we use ceramic components for load-bearing applications \pause
+%         \item Ceramics generally have a low degree of toughness, although combining them in composites can dramatically improve this property
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Chemical insensitivity}
+
+% \centering
+% \includegraphics[height=1in]{Silde_Template/images/pyrex.jpg}
+
+% \begin{itemize}
+%     \item A large number of ceramics are stable in both harsh chemical and thermal environments
+%     \pause
+%     \item Example Pyrex: resistant to many corrosive chemicals, \pause stable at high temperatures (does not soften until 1,100 K),\pause and resistant to thermal shock because of its low coefficient of thermal expansion ($33x10^{-7} K^{-1}$)
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Transparent}
+
+% \centering
+% \includegraphics[height=1in]{Silde_Template/images/apple-watch-series-7-lte-45mm-silver-stainless-steel-silver-milanese-loop-mkje3ll-a-sku4790177.jpeg}
+
+% \begin{itemize}
+%     \item Many ceramics are transparent because they have a large $E_g$
+%     \pause
+%     \item Examples include sapphire watch covers, precious stones, and optical fibers.
+%     \pause
+%     \item Glass optical fibers have percent transmission > 96\%/km
+%     \pause
+%     \item "Clearly" not all ceramics are transparent
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Traditional Ceramics}
+
+% High volume items such as bricks, tiles, toilet bowls (whitewares), and pottery
+% \vspace{1em}
+
+% \begin{columns}{\textwidth}
+%   \begin{column}{0.33\textwidth}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/brick.jpeg}
+%   \end{column}
+%   \begin{column}{0.33\textwidth}
+%   \centering
+%     \includegraphics[height=1in]{Silde_Template/images/toilet.jpeg}
+%   \end{column}
+%     \begin{column}{0.33\textwidth}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/tiles.jpeg}
+%   \end{column}
+% \end{columns}
+% \pause
+% \begin{itemize}
+%     \item Generally based on clay or silica
+%     \item can require complex processing or tooling
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Advanced or Technical Ceramics}
+
+% \textbf{Advanced Ceramics}
+% Advanced ceramics are newer materials, such as laser host materials, piezoelectric ceramics, and ceramics
+% for dynamic random access memories (DRAMs), among others, which are often produced in small quantities at higher prices.    
+% \vspace{1em}
+
+% \begin{columns}
+%   \begin{column}{0.33\textwidth}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/piezoelectric_floor.png}
+%   \end{column}
+%   \begin{column}{0.33\textwidth}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/DRAM.jpeg}
+%   \end{column}
+%     \begin{column}{0.33\textwidth}
+%     \centering
+%     \includegraphics[height=1in]{Silde_Template/images/ballistic ceramics.jpeg}
+%   \end{column}
+% \end{columns}
+% \pause
+% \vspace{1em}
+
+% \begin{itemize}
+%     \item They exhibit superior mechanical properties, corrosion/oxidation resistance, or electrical, optical and/or magnetic properties.
+%     \item Emerged primarily over the last 100 years
+% \end{itemize}
+
+% \end{frame}
+
+% \begin{frame}{Properties and Applications of Ceramics}
+% \centering
+% \includegraphics[height=\textheight]{Silde_Template/images/Properties of ceramics.png}
+% \end{frame}
+
+% \begin{frame}{Advanced vs. Traditional Ceramics}
+% \centering
+% \includegraphics[height=\textheight]{Silde_Template/images/Comparison.png}
+% \end{frame}
+
+% \section{Market and Future}
+
+% \begin{frame}{Overall Market Finances}
+% Ceramics is a multibillion-dollar industry. Worldwide sales are about \$100 billion per year; the U.S. market alone is over \$35 billion annually.
+% \vspace{1em}
+
+% \centering
+% \includegraphics[width=0.75\textwidth]{Silde_Template/images/general market.png}
+% \vspace{1em}
+
+% \begin{itemize}
+%     \item Bricks and glass, the commodity ceramics have the largest market
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Advanced Ceramics}
+% \vspace{1em}
+
+% \centering
+% \includegraphics[width=0.6\textwidth]{Silde_Template/images/advanced ceramics.png}
+
+% \begin{itemize}
+%     \small
+%     \item More than half of this sector is comprised of electrical and electronic ceramics and ceramic packages \pause
+%     \item Significant growth areas include microwave filters and resonators for use in wireless communication \pause
+%     \item Engineering ceramics, also called structural ceramics, include wear-resistant components such as dies, nozzles,and bearings\pause
+%     \item Bioceramics (e.g., ceramic and glass-ceramic implants and dental crowns) account for about 20\% of this market (dental crowns) \pause 
+%     \item Porcelain enamel is the ceramic coating applied to many steel appliances such as kitchen stoves, washers and dryers \pause
+%     \item More than 50\% of refractories are consumed by the steel industry \pause
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Structural Ceramics}
+% \begin{itemize}
+%     \item Include silicon nitride ($Si_3N_4$), silicon carbide ($SiC$), zirconia ($ZrO_2$), boron carbide ($B_4C$), and alumina ($Al_2O_3$)
+%     \pause
+%     \item They are used in applications such as cutting tools, wear components, heat exchangers, and engine parts
+%     \pause
+%     \item The relevant properties of structural ceramics are high hardness, low density, high-temperature mechanical strength, creep resistance, corrosion resistance, and chemical inertness
+%     \pause
+% \end{itemize}
+% \vspace{1em}
+
+% \textbf{Key Issues}
+% \begin{itemize}
+%     \item Reducing the cost of the final product
+%     \item Improving reliability
+%     \item Improving reproducibility
+% \end{itemize}
+
+% \end{frame}
+
+% \begin{frame}{Electrical Ceramics}
+% \begin{itemize}
+%     \item Include barium titanate ($BaTiO_3$), zinc oxide ($ZnO$), lead zirconate titanate [$Pb(Zr_xTi_{1-x})O_3$], aluminum nitride ($AlN$), and high-temperature superconductors \pause
+%     \item They are used in applications as diverse as capacitor dielectrics, varistors, micro-electro-mechanical systems (MEMS), substrates, and packages for integrated circuits \pause
+% \end{itemize}
+
+% \textbf{Key Issues}
+% \begin{itemize}
+%     \item Integrating with existing semiconductor technology
+%     \item Improving processing
+%     \item Enhancing compatibility with other materials
+%     \item Improved electrical resistivity in thin films
+% \end{itemize}
+
+% \end{frame}
+
+% \begin{frame}{Bioceramics}
+% \begin{itemize}
+%     \item The response of these materials varies from nearly inert to bioactive to resorbable \pause
+%     \item Nearly inert bioceramics include alumina ($Al_2O_3$) and zirconia ($ZrO_2$) \pause
+%     \item Bioactive ceramics include hydroxyapatite and some special glass and glass-ceramic formulations \pause
+%     \item Tricalcium phosphate, which dissolves in the body, is an example of a resorbable bioceramic \pause
+% \end{itemize}
+
+% \textbf{Key Issues}
+% \begin{itemize}
+%     \item Matching mechanical properties to human tissues
+%     \item Increasing reliability
+%     \item Enhancing compatibility with other materials
+%     \item Improving processing methods
+% \end{itemize}
+    
+% \end{frame}
+
+% \begin{frame}{Coating and Films}
+%     \begin{itemize}
+%         \item Coatings and films are generally used to modify the surface properties of a material (e.g., a bioactive coating deposited on the surface of a bio-inert implant) \pause
+%         \item They may also be used for economic reasons: we may want to apply a coating of an expensive material on a lower cost substrate rather than make the component entirely from the more expensive material \pause $\rightarrow$ An example is applying a diamond coating on a cutting tool \pause
+%         \item Thin film properties can be better, the transport properties of thin films of HTSCs, which are improved over the bulk
+%     \end{itemize}
+
+
+% \textbf{Key Issues}
+% \begin{itemize}
+%     \item Understanding film deposition and growth
+%     \item Improving film/substrate adhesion
+%     \item Increasing reproducibility
+% \end{itemize}
+
+% \end{frame}
+% \begin{itemize}
+%     \item Composites may use ceramics as the matrix phase and/or the reinforcing phase \pause
+%     \item The purpose of a composite is to display a combination of the preferred characteristics of each of the components \pause
+%     \item Ceramic matrix composites increase fracture toughness through reinforcement with whiskers or fibers \pause
+%     \item Metal matrix composites usually an increase in strength, enhanced creep resistance, and greater wear resistance \pause
+% \end{itemize}
+% \begin{frame}{Composites}
+
+% \textbf{Key Issues}
+% \begin{itemize}
+%     \item Reducing processing costs
+%     \item Developing compatible combinations of materials (e.g., matching coefficients of thermal expansion)
+%     \item Understanding interfaces
+% \end{itemize}
+
+% \end{frame}
+
+% \begin{frame}{Nanoceramics}
+% \begin{itemize}
+%     \item Widely used in cosmetic products (e.g., sunscreens), as stabilizers, and they are critical in many catalytic applications \pause
+%     \item Modern applications in quantum dots, fuel cells, and specialty coating applications \pause
+% \end{itemize}
+
+% \textbf{Key Issues}
+% \begin{itemize}
+%     \item Making them
+%     \item Integrating them into devices through either top-down or bottom-up approaches
+%     \item Ensuring that they do not have a negative impact on society
+% \end{itemize}
+
+% \end{frame}
+
+\end{document}
+
+
+
+        
