@@ -1,0 +1,201 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage[version=4]{mhchem}
+\usepackage[shortlabels]{enumitem}
+
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+
+% Edit these as appropriate
+\newcommand\course{MAT 214}
+\newcommand\hwnumber{1}                  % <-- homework number
+% \newcommand\NetIDa{netid19823}           % <-- NetID of person #1
+% \newcommand\NetIDb{netid12038}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+% \lhead{\NetIDa}
+% \lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lhead{Due Feb. 14 @ 7:55 am}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{Problem 1 - 16 points}
+Which of the following materials can be classified as a ceramic? Provide justification. If the material is a ceramic please provide one example application where the materials is used.
+
+\begin{enumerate}[(a)]
+    \item Solid Argon
+    \item Molybdenum diselenide (\ce{MoSe2})
+    \item Solid Salt \ce{NaCl}
+    \item Ice
+    \item Boron Carbide \ce{B4C}
+    \item Polyethylene
+\end{enumerate}
+
+\textbf{Points Breakdown:}\\[12pt]
+2 points: Identify correct ceramic material or not\\
+1 point: Identifying application where ceramic material is used.\\
+Note, do not use the points as an indicator of how many ceramic materials are included. You will be misled.\\[0.6pt]
+\textbf{Total points: 16}
+
+\section*{Problem 1 Solution - 16 points}
+\begin{enumerate}[(a)]
+    \item Solid Argon\\[0.2cm]
+    Solid argon is not a ceramic because it is composed of individual molecules that are weakly bonded. Ceramics require all bonds to be of ionic/covalent nature.
+    \item Molybdenum diselenide (\ce{MoSe2})\\[0.2 cm]
+    Molybdenum diselenide has bonds of mixed ionic/covalent character and is a solid. This is a classic ceramic material with applications as a refractory ceramic and heating element.
+    \item Solid Salt \ce{NaCl} \\[0.2cm]
+    Solid salt has strong ionic bonds and is the basis for the classical rock salt crystallographic structure. Salt has many applications due to its hydroscopic nature. 
+    \item Ice \\[0.2cm]
+    Ice is not a ceramic because the bonds between the water molecules are a special type of van der waals bonds called hydrogen bonds.
+    \item Boron Carbide \ce{B4C} \\[0.2cm]
+    Boron Carbide is a ceramic material due to the crystallographic structure and ionic covalent nature of the bonds. Boron Carbide is used as tank armor. 
+    \item Polyethylene \\[0.2cm]
+    Polyethylene is a classical polymer and thus is not a ceramic material. While it does have covalent bonds in the chain, the secondary bonds are van der Waals and thus are not ceramic.  
+\end{enumerate}
+
+\newpage
+\section*{Problem 2}
+The following definition of ceramic material were proposed. Explain if they are good definitions or not.
+
+\begin{enumerate}[(a)]
+    \item "All ceramics are opaque"
+    \item "All ceramics have covalent, ionic, or mixed ionic covalent bonds"
+    \item "All ceramics are good insulators"
+    \item "All ceramics are brittle"
+    \item "All ceramics are solids"
+\end{enumerate}
+
+\textbf{Points Breakdown:}\\[12pt]
+1 point: For a general statement on if these are good definitions. Are they necessary conditions or definitions?\\
+3 points: For each correct justification.\\[6pt]
+\textbf{Total points: 16}
+
+\section*{Problem 2 Solution - 16 points}
+None of these are actually good definitions of ceramic materials. There are some statements that are necessary conditions of a ceramic material but this does not mean that if their conditions are met the material is a ceramic.
+
+\begin{enumerate}[(a)]
+    \item "All ceramics are opaque"\\[0.2 cm]
+    Most ceramics are opaque because of pores. If a ceramic material is poor free and has a large band gap, such that no light is absorbed it will be transparent.
+    \item "All ceramics have covalent, ionic, or mixed ionic covalent bonds"\\[0.2 cm]
+    This is a necessary condition of a ceramic material. This condition, by itself, does not make a material a ceramic. If the material is not a solid, or has non-covalent/ionic bonds which make it a solid then it is not a ceramic. An example is ice.
+    \item "All ceramics are good insulators"\\[0.2 cm]
+    Most ceramics are good insulators but high-temperature superconductors are all ceramics and are perfect insulators. 
+    \item "All ceramics are brittle"\\[0.2 cm]
+    Most ceramics are brittle, but there are many ballistic ceramics that are extremely tough.
+    \item "All ceramics are solids" \\[0.2 cm]
+    This is a condition that must be met for a material to be a ceramic. There are, however, many solid materials that are not ceramics.
+\end{enumerate}
+
+
+\newpage
+\section*{Problem 3 - 16 points}
+Tiles used for spacecraft reentry are made of silica yet have a low thermal conductivity of ~0.028 $BTU/ft-hr-^{\circ}F$. Fused silica, a chemically identical material has a thermal conductivity of ~9.6 $BTU/ft-hr-^{\circ}F$. Why is there an orders-of-magnitude difference in the thermal conductivity. 
+
+\textbf{Total: 16  Points}
+
+\section*{Problem 3 Solution - 16 points}
+
+Thermal conductivity is how fast heat is conducted through a material. Thermal transport can happen electronically associated with electrical conductivity or through phonon modes associated with vibrations modes of the lattice. For thermal conduction to happen heat needs to be transferred from the hot to the cold side. The tiles used for spacecrafts are highly porous, and thus are made mostly of air. The thermal conductivity of air is ~0.01407 $BTU/ft-hr-^{\circ}F$. Thus the spacecraft tiles are essentially a composite of a ceramic material and air. The surface of the ceramic heats up due to friction upon reentry but does not lead to significant thermal transport to the spacecrafts body, thus protecting it. Fused silica has a much lower porosity and, thus, as a bulk solid has a might higher thermal conductivity.  
+
+\newpage
+\section*{Problem 4 - 16 points}
+
+Describe \textbf{two} reasons why you might want to design a pore free ceramic material to achieve a property for a specific application. Make sure you mention both the required material property and the application. \\
+
+\textbf{Points Breakdown:}\\[12pt]
+4 points for each property described\\
+4 points for each application described\\[6 pt]
+\textbf{Total: 16 Points}
+
+\section*{Solution Problem 4}
+
+Some possible examples:
+\begin{enumerate}
+    \item Improved mechanical properties - pore free ceramics have a much lower density of critical defects. This makes them less likely to have a critical defect that will lead to failure. 
+    \item Optical properties - Pores and defects scatter light creating a pore free ceramic allows for materials to be optically transparent, if they have a band gap larger than then energy of visible light. A possible application is in high performance glass materials or person-made gemstones. 
+\end{enumerate}
+
+\newpage
+\section*{Problem 5 - 16 points}
+
+What is a refractory ceramic? What applications are they used for? Describe at least 3 essential properties of refractory ceramic materials?\\
+
+\textbf{Points Breakdown:}\\[12pt]
+2 points for definition of a refractory ceramic.\\
+2 points for applications where refractory ceramics are used. \\
+4 points for each property essential for refractory ceramics. \\[6 pt]
+\textbf{Total: 16 points}
+
+\section*{Problem 5 Solution - 16 Points}
+
+Refractory ceramics are ceramic materials designed to withstand extremely high temperature required for manufacturing and processing. They are used primarily as the surround and support materials for ovens, furnaces, and molds. 
+
+They have a number of essential properties
+\begin{enumerate}
+    \item They must be very temperature stable well-beyond the application temperatures
+    \item They must have low thermal expansion coefficients to avoid thermal stresses associated with heating cycles
+    \item They must be mechanically robust to avoid failures in processing applications. 
+    \item They must be chemically inert at elevated temperatures. You do not want the material to chemically degrade over time. 
+    \item They must have good creep resistance. The materials will likely have a load at elevated temperatures for a long period of time. This will promote diffusion-based creep processes.
+\end{enumerate}
+
+\newpage
+
+\section*{Problem 6 - 16 points}
+
+Draw a qualitative plot indicating the thermal evolution of a concrete setting reaction over time. Make sure to indicate the time scales of the reaction. Explain why thermal management is important when considering concrete? Which part of the reaction is most important to consider and why?\\
+
+\textbf{Points Breakdown:}\\[12pt]
+8 points for graph\\
+2 points for correct reaction time scales\\
+3 points for why thermal management is important\\
+3 points for which part of the reaction is most important to consider\\[6 pt]
+\textbf{Total: 16 Points}
+
+\section*{Solution Problem 6}
+
+\centering
+\includegraphics[height=3in]{Heating profile.png}
+
+\justifying
+Thermal management is so important because significant heat is evolved as cement is cured. If the design and the heat evolution are not considered thermal stresses can build over time and lead to failure. The hardening step is the most important step in regards to the thermal evolution. While the heat evolution rate is slower than the setting step hardening occurs over many days. Thus the total thermal energy is much larger than the initial setting reaction. 
+\end{document}
